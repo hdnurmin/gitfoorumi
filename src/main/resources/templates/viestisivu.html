@@ -7,14 +7,14 @@
 
 </head>
 <body>
-<h1 th:text="${viesti.otsikko}"> </h1>
+<h1 th:text="${viesti}"> </h1>
 
 <div>
     <table>
         <tr th:each="taulukkoMuuttuja : ${viesti}" th:object="${taulukkoMuuttuja}">
             <td th:text="*{sisalto}"></td>
-            <td th:text="*{pvm}"></td>
-            <td th:text="*{jotain muuta}"></td>
+            <!--<td th:text="*{pvm}"></td>-->
+            <!--<td th:text="*{jotain muuta}"></td>-->
         </tr>
     </table>
 </div>

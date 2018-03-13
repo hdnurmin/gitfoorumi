@@ -55,4 +55,12 @@ public class Otsikko {
                 ", otsikonNimi='" + otsikonNimi + '\'' +
                 '}';
     }
+
+    public List<Viesti> getAiheenViestit() {
+        return aiheenViestit;
+    }
+
+    public void setAiheenViestit(List<Viesti> aiheenViestit) {
+        this.aiheenViestit = aiheenViestit;
+    }
 }

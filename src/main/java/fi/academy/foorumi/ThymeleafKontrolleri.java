@@ -25,10 +25,19 @@ public class ThymeleafKontrolleri {
     }
 
     @GetMapping ("/aiheenkeskustelut")
-    public String viestiListaus (@RequestParam (name="id") String aihe, Model model) {
+    public String keskusteluListaus (@RequestParam (name="id") String aihe, Model model) {
         List<Otsikko> optaihe = otsikkorepo.findByAihealue(aihe);
             model.addAttribute("otsikonnimi", optaihe);
 
         return "aiheenkeskustelut";
     }
+
+    @GetMapping ("/viestisivu")
+    public String viestiListaus (@RequestParam (name="id") int id, Model model) {
+        List<Viesti> optviesti = viestirepo.findByTunniste(id);
+        model.addAttribute("viesti", optviesti);
+        return "viestisivu";
+    }
+
+
 }
