@@ -4,6 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class ThymeleafKontrolleri {
@@ -21,8 +25,10 @@ public class ThymeleafKontrolleri {
     }
 
     @GetMapping ("/aiheenkeskustelut")
-    public String viestiListaus (Model model) {
-        model.addAttribute("otsikonnimi", viestirepo.findAll());
+    public String viestiListaus (@RequestParam (name="id") String aihe, Model model) {
+        List<Otsikko> optaihe = otsikkorepo.findByAihealue(aihe);
+            model.addAttribute("otsikonnimi", optaihe);
+
         return "aiheenkeskustelut";
     }
 }
