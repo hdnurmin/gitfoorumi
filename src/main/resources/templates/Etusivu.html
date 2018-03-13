@@ -6,7 +6,28 @@
     <title>Etusivu</title>
 </head>
 <body>
-<h3>Keskustelufoorumi</h3>
+<h1>Keskustelufoorumi</h1>
+
+<div>
+    <table>
+        <tr th:each="taulukkoMuuttuja : ${otsikko}" th:object="${taulukkoMuuttuja}">
+            <td th:text="*{aihealue}"></td>
+            <td th:text="*{keskustelut}"></td>
+            <td th:text="*{uusin viesti}"></td>
+        </tr>
+    </table>
+</div>
+<div>
+    <h3>Kirjaudu sisään</h3>
+    <form>
+        Käyttäjätunnus:<br>
+        <input type="text" name="käyttäjätunnus"><br>
+        Salasana:<br>
+        <input type="password" name="salasana">
+        <input type="submit">
+    </form>
+    <a href="Rekisteroidy.html">Rekisteröidy käyttäjäksi</a>
+</div>
 
 </body>
 </html>
