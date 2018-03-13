@@ -27,12 +27,10 @@ public class FoorumiApplication {
 			Viesti ekaViesti = new Viesti("Blah blah blah", ekaOtsikko);
 			Viesti tokaViesti = new Viesti("Laalaalaa", ekaOtsikko);
 			Viesti kolmasViesti = new Viesti("Tadaa", ekaOtsikko);
-<<<<<<< HEAD
 
-=======
+
 			Viesti neljasViesti = new Viesti("Jeejee", tokaOtsikko);
->>>>>>> a8c7793233611fc69d324672fb77cf81d894a182
-			viestit.add(ekaViesti);
+    		viestit.add(ekaViesti);
 			viestit.add(tokaViesti);
 			viestit.add(kolmasViesti);
 			viestit.add(neljasViesti);
