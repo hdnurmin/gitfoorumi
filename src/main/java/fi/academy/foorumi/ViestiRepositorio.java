@@ -2,5 +2,5 @@ package fi.academy.foorumi;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface OtsikkoRepositorio extends CrudRepository<Otsikko, Integer> {
+public interface ViestiRepositorio extends CrudRepository<Viesti, Integer>{
 }
