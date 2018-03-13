@@ -11,9 +11,18 @@ public class ThymeleafKontrolleri {
     @Autowired
     private OtsikkoRepositorio otsikkorepo;
 
+    @Autowired
+    private ViestiRepositorio viestirepo;
+
     @GetMapping ("/etusivu")
     public String aihelistausEtusivulle (Model model) {
         model.addAttribute("otsikko", otsikkorepo.findAll());
         return "etusivu";
+    }
+
+    @GetMapping ("/aiheenkeskustelut")
+    public String viestiListaus (Model model) {
+        model.addAttribute("otsikonnimi", viestirepo.findAll());
+        return "aiheenkeskustelut";
     }
 }

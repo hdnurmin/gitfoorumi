@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="tyyli.css" th:href="@{/tyyli.css}"/>
+    <title>Aiheen keskustelut</title>
+</head>
+<body>
+<div>
+    <table>
+        <th>Keskustelut</th>
+        <tr th:each="taulukkoMuuttuja : ${otsikonnimi}" th:object="${taulukkoMuuttuja}">
+            <td ><a th:href="@{/viestisivu}+'?id='+*{id}" th:text="*{otsikonNimi}"/></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
