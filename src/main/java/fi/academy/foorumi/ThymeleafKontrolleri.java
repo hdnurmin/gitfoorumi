@@ -34,7 +34,7 @@ public class ThymeleafKontrolleri {
 
     @GetMapping ("/viestisivu")
     public String viestiListaus (@RequestParam (name="id") int id, Model model) {
-        List<Viesti> optviesti = viestirepo.findByTunniste(id);
+        List<Viesti> optviesti = viestirepo.haeViestit(id);
         model.addAttribute("viesti", optviesti);
         return "viestisivu";
     }
