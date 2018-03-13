@@ -26,6 +26,7 @@ public class FoorumiApplication {
 			Viesti ekaViesti = new Viesti("Blah blah blah", ekaOtsikko);
 			Viesti tokaViesti = new Viesti("Laalaalaa", ekaOtsikko);
 			Viesti kolmasViesti = new Viesti("Tadaa", ekaOtsikko);
+
 			viestit.add(ekaViesti);
 			viestit.add(tokaViesti);
 			viestit.add(kolmasViesti);

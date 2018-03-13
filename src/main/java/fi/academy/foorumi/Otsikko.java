@@ -1,5 +1,7 @@
 package fi.academy.foorumi;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -9,6 +11,7 @@ public class Otsikko {
     private int id;
     private String aihealue;
     private String otsikonNimi;
+    @JsonIgnore
     @OneToMany (mappedBy = "otsikko")
     public List<Viesti> aiheenViestit;
 
