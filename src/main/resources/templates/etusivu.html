@@ -12,8 +12,8 @@
     <table>
         <tr th:each="taulukkoMuuttuja : ${otsikko}" th:object="${taulukkoMuuttuja}">
             <td th:text="*{aihealue}"></td>
-            <td th:text="*{keskustelut}"></td>
-            <td th:text="*{uusin viesti}"></td>
+            <td th:text="*{otsikonNimi}"></td>
+            <td th:text="*{id}"></td>
         </tr>
     </table>
 </div>
@@ -26,7 +26,7 @@
         <input type="password" name="salasana">
         <input type="submit">
     </form>
-    <a href="Rekisteroidy.html">Rekisteröidy käyttäjäksi</a>
+    <a href="rekisteroidy.html">Rekisteröidy käyttäjäksi</a>
 </div>
 
 </body>
