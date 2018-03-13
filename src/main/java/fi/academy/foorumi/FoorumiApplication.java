@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,14 +17,25 @@ public class FoorumiApplication {
 		SpringApplication.run(FoorumiApplication.class, args);
 	}
 
+	@Transactional
 	@Bean
 	CommandLineRunner luoOppilaat(ViestiRepositorio viestirepo, OtsikkoRepositorio otsikkorepo) {
 		return (args) -> {
-			List<Viesti> oppilaat = new ArrayList<>();
+			List<Viesti> viestit = new ArrayList<>();
 			Otsikko ekaOtsikko = new Otsikko("Kanit", "Hieno päivä tänään");
 			Viesti ekaViesti = new Viesti("Blah blah blah", ekaOtsikko);
-			viestirepo.save(ekaViesti);
-			otsikkorepo.save(ekaOtsikko);
+			Viesti tokaViesti = new Viesti("Laalaalaa", ekaOtsikko);
+			Viesti kolmasViesti = new Viesti("Tadaa", ekaOtsikko);
+			viestit.add(ekaViesti);
+			viestit.add(tokaViesti);
+			viestit.add(kolmasViesti);
+
+			viestirepo.saveAll(viestit);
+
+			/*viestirepo.save(ekaViesti);
+			viestirepo.save(tokaViesti);
+			viestirepo.save(kolmasViesti);*/
+			/*otsikkorepo.save(ekaOtsikko);*/
 
 /*			Koulu academySuomi = new Koulu("Academy Suomi", "Espoo");
 			academySuomi= koulurepositorio.save(academySuomi);
