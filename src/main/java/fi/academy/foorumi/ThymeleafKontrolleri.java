@@ -20,10 +20,9 @@ public class ThymeleafKontrolleri {
         return "etusivu";
     }
 
-    @GetMapping ("/viestisivu")
-    public String viestiListaus (Model model, Viesti viesti) {
-        model.addAttribute("viesti", viestirepo.findAll());
-        //model.addAttribute();
-        return "viestisivu";
+    @GetMapping ("/aiheenkeskustelut")
+    public String viestiListaus (Model model) {
+        model.addAttribute("otsikonnimi", viestirepo.findAll());
+        return "aiheenkeskustelut";
     }
 }
