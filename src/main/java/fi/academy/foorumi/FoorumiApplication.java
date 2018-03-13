@@ -23,12 +23,15 @@ public class FoorumiApplication {
 		return (args) -> {
 			List<Viesti> viestit = new ArrayList<>();
 			Otsikko ekaOtsikko = new Otsikko("Kanit", "Hieno päivä tänään");
+			Otsikko tokaOtsikko = new Otsikko("Karhut", "Vielä hienompi päivä");
 			Viesti ekaViesti = new Viesti("Blah blah blah", ekaOtsikko);
 			Viesti tokaViesti = new Viesti("Laalaalaa", ekaOtsikko);
 			Viesti kolmasViesti = new Viesti("Tadaa", ekaOtsikko);
+			Viesti neljasViesti = new Viesti("Jeejee", tokaOtsikko);
 			viestit.add(ekaViesti);
 			viestit.add(tokaViesti);
 			viestit.add(kolmasViesti);
+			viestit.add(neljasViesti);
 
 			viestirepo.saveAll(viestit);
 
