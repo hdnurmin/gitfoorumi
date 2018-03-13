@@ -8,15 +8,21 @@
 <body>
 <h1>Keskustelufoorumi</h1>
 
+<!--Listataan aihealueet tietokannasta taulukoksi. Aihealueen nimi on linkki, joka johtaa-->
+<!--aiheen alla oleviin keskusteluihin.-->
 <div>
     <table>
         <tr th:each="taulukkoMuuttuja : ${otsikko}" th:object="${taulukkoMuuttuja}">
             <td th:text="*{aihealue}"></td>
+            <td ><a th:href="@{/viestisivu.html}+'?id='+*{id}" th:text="*{aihealue}"/></td>
             <td th:text="*{otsikonNimi}"></td>
             <td th:text="*{id}"></td>
         </tr>
     </table>
 </div>
+
+<!--Käyttäjä voi kirjautua sisään jo olemassa olevilla tunnuksilla tai siirtyä sivulle, jossa voi -->
+<!--luoda tunnukset.-->
 <div>
     <h3>Kirjaudu sisään</h3>
     <form>
