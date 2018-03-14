@@ -9,14 +9,14 @@
     <title>Aiheen keskustelut</title>
 </head>
 <body>
-<div>
-    <table>
-        <th>Keskustelut</th>
-        <tr th:each="taulukkoMuuttuja : ${otsikonnimi}" th:object="${taulukkoMuuttuja}">
-            <td ><a th:href="@{/viestisivu}+'?id='+*{id}" th:text="*{otsikonNimi}"/></td>
+<!--<div>-->
+    <!--<table>-->
+        <!--<th>Keskustelut</th>-->
+        <!--<tr th:each="taulukkoMuuttuja : ${otsikonnimi}" th:object="${taulukkoMuuttuja}">-->
+            <!--<td ><a th:href="@{/viestisivu}+'?id='+*{id}" th:text="*{otsikonNimi}"/></td>-->
 
-        </tr>
-    </table>
+        <!--</tr>-->
+    <!--</table>-->
 <div class="container">
     <nav class="navbar navbar-default">
         <div class="navbar-header">
