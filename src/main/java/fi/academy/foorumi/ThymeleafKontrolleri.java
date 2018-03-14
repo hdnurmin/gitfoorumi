@@ -68,5 +68,11 @@ public class ThymeleafKontrolleri {
         return "rekisteroidy";
     }
 
+/*    @DeleteMapping("/poistaviesti/{id}")
+    public String poistaViesteja(@RequestParam (name="tunniste") int tunniste, @RequestBody Viesti viesti) {
+     viesti.setTunniste(tunniste);
+     viestirepo.delete(viesti);
+     return "redirect:viestisivu";
+    }*/
 
 }

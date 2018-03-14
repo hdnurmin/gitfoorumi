@@ -56,6 +56,14 @@
                 <td th:text="*{sisalto}"></td>
                 <td th:text="*{lahetysAika}"></td>
 
+<!--                <td>
+                    <form th:action="@{/poistaviesti}" method="post" th:object="${taulukkoMuuttuja}">
+                        <input type="hidden" th:field="*{tunniste}"/>
+                        <a th:href="'/poistaviesti?id='+ ${taulukkoMuuttuja.tunniste}"> <button type="button" value="poista" class="btn btn-danger">Poista</button></a>
+
+                    </form>
+                </td>-->
+
             </tr>
         </table>
 
