@@ -9,31 +9,37 @@
     <title>Etusivu</title>
 </head>
 <body>
-<h1>Keskustelufoorumi</h1>
-
+<div class="jumbotron text-center">
+    <h1>Uimafoorumi</h1>
+    <p>Tervetuloa keskustelemaan uinnista!</p>
+</div>
 <!--Listataan aihealueet tietokannasta taulukoksi. Aihealueen nimi on linkki, joka johtaa-->
 <!--aiheen alla oleviin keskusteluihin.-->
-<div>
-    <table>
-        <th>Keskusteluaiheet</th>
-        <tr th:each="taulukkoMuuttuja : ${otsikko}" th:object="${taulukkoMuuttuja}">
-            <td ><a th:href="@{/aiheenkeskustelut}+'?id='+*{aihealue}" th:text="*{aihealue}"/></td>
-        </tr>
-    </table>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <table>
+                <th>Keskusteluaiheet</th>
+                <tr th:each="taulukkoMuuttuja : ${otsikko}" th:object="${taulukkoMuuttuja}">
+                    <td><a th:href="@{/aiheenkeskustelut}+'?id='+*{aihealue}" th:text="*{aihealue}"/></td>
+                </tr>
+            </table>
+        </div>
+        <!--Käyttäjä voi kirjautua sisään jo olemassa olevilla tunnuksilla tai siirtyä sivulle, jossa voi -->
+        <!--luoda tunnukset.-->
+        <div class="col-sm-4">
+            <h3>Kirjaudu sisään</h3>
+            <form>
+                Käyttäjätunnus:<br>
+                <input type="text" name="käyttäjätunnus"><br>
+                Salasana:<br>
+                <input type="password" name="salasana">
+                <input type="submit">
+            </form>
+            <a href="rekisteroidy.html">Rekisteröidy käyttäjäksi</a>
+        </div>
+    </div>
 </div>
-
-<!--Käyttäjä voi kirjautua sisään jo olemassa olevilla tunnuksilla tai siirtyä sivulle, jossa voi -->
-<!--luoda tunnukset.-->
-<div>
-    <h3>Kirjaudu sisään</h3>
-    <form>
-        Käyttäjätunnus:<br>
-        <input type="text" name="käyttäjätunnus"><br>
-        Salasana:<br>
-        <input type="password" name="salasana">
-        <input type="submit">
-    </form>
-    <a href="rekisteroidy.html">Rekisteröidy käyttäjäksi</a>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script th:src="@{js/bootstrap.min.js}"></script>
