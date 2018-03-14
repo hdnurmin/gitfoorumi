@@ -38,7 +38,7 @@
     </nav>
 
     <div>
-        <table>
+        <table class="table">
             <th>Keskustelut</th>
             <tr th:each="taulukkoMuuttuja : ${otsikonnimi}" th:object="${taulukkoMuuttuja}">
                 <td><a th:href="@{/viestisivu}+'?id='+*{id}" th:text="*{otsikonNimi}"/></td>
