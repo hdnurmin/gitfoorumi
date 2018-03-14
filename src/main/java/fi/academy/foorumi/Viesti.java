@@ -11,6 +11,7 @@ public class Viesti {
     @Lob
     private String sisalto;
     private LocalDate lahetysAika;
+    private String kirjoittaja;
     @ManyToOne (cascade = CascadeType.PERSIST)
     @JoinColumn
     public Otsikko otsikko;
@@ -21,6 +22,14 @@ public class Viesti {
     }
 
     public Viesti() {
+    }
+
+    public String getKirjoittaja() {
+        return kirjoittaja;
+    }
+
+    public void setKirjoittaja(String kirjoittaja) {
+        this.kirjoittaja = kirjoittaja;
     }
 
     public int getTunniste() {
@@ -61,6 +70,7 @@ public class Viesti {
                 "tunniste=" + tunniste +
                 ", sisalto='" + sisalto + '\'' +
                 ", lahetysAika=" + lahetysAika +
+                ", kirjoittaja='" + kirjoittaja + '\'' +
                 ", otsikko=" + otsikko +
                 '}';
     }
