@@ -4,30 +4,31 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet"th:href="@{/css/bootstrap.min.css}"/>
-    <link rel="stylesheet"th:href="@{/css/tyyli.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/tyyli.css}"/>
     <title>Etusivu</title>
 </head>
 <body>
-<div class="jumbotron text-center">
-    <h1>Uimafoorumi</h1>
-    <p>Tervetuloa keskustelemaan uinnista!</p>
-</div>
-<!--Listataan aihealueet tietokannasta taulukoksi. Aihealueen nimi on linkki, joka johtaa-->
-<!--aiheen alla oleviin keskusteluihin.-->
 <div class="container">
-    <div class="row">
-        <div class="col-sm-4">
+    <div class="jumbotron text-center">
+        <h1>Uimafoorumi</h1>
+        <p>Tervetuloa keskustelemaan uinnista!</p>
+    </div>
+    <!--Listataan aihealueet tietokannasta taulukoksi. Aihealueen nimi on linkki, joka johtaa-->
+    <!--aiheen alla oleviin keskusteluihin.-->
+
+    <div class="row" style="background-color: rgba(242, 242, 242 ,0.5)">
+        <div class="col-sm-6">
             <table>
-                <th>Keskusteluaiheet</th>
-                <tr th:each="taulukkoMuuttuja : ${otsikko}" th:object="${taulukkoMuuttuja}">
-                    <td><a th:href="@{/aiheenkeskustelut}+'?id='+*{aihealue}" th:text="*{aihealue}"/></td>
-                </tr>
+            <th>Keskusteluaiheet</th>
+            <tr th:each="taulukkoMuuttuja : ${otsikko}" th:object="${taulukkoMuuttuja}">
+                <td><a th:href="@{/aiheenkeskustelut}+'?id='+*{aihealue}" th:text="*{aihealue}"/></td>
+            </tr>
             </table>
         </div>
         <!--Käyttäjä voi kirjautua sisään jo olemassa olevilla tunnuksilla tai siirtyä sivulle, jossa voi -->
         <!--luoda tunnukset.-->
-        <div class="col-sm-4">
+        <div class="col-sm-6">
             <h3>Kirjaudu sisään</h3>
             <form>
                 Käyttäjätunnus:<br>
