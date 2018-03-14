@@ -10,12 +10,34 @@
 </head>
 <body>
 <div class="container">
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="etusivu">Etusivu</a>
+        </div>
+        <!--Käyttäjä voi kirjautua sisään jo olemassa olevilla tunnuksilla tai siirtyä sivulle, jossa voi -->
+        <!--luoda tunnukset.-->
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false">Kirjaudu<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <div>
+                        <form>
+                            Käyttäjätunnus:<br>
+                            <input type="text" name="käyttäjätunnus"><br>
+                            Salasana:<br>
+                            <input type="password" name="salasana">
+                            <input type="submit">
+                        </form>
+                    </div>
+                </ul>
+            </li>
+            <li><a href="rekisteroidy">Rekisteröidy</a></li>
+        </ul>
+    </nav>
     <div class="jumbotron text-center" style="background-color: rgba(242, 242, 242 ,0.8)">
         <h1>Uintifoorumi</h1>
         <p>Tervetuloa keskustelemaan uinnista!</p>
-        <h5>Kaikki uintiin liittyvä keskustelu on toivottavaa ja sallittua. Pidetään keskustelu siistinä
-        ja asiallisena. Moderaattoreilla on mahdollisuus poistaa asiattomat kommentit ja keskustelun aloitukset.
-        Jos kuitenkin haluat purkaa ärtymystäsi, tee see rataraivo aiheen alla olevissa keskusteluissa.</h5>
     </div>
     <!--Listataan aihealueet tietokannasta taulukoksi. Aihealueen nimi on linkki, joka johtaa-->
     <!--aiheen alla oleviin keskusteluihin.-->
@@ -29,18 +51,11 @@
             </tr>
             </table>
         </div>
-        <!--Käyttäjä voi kirjautua sisään jo olemassa olevilla tunnuksilla tai siirtyä sivulle, jossa voi -->
-        <!--luoda tunnukset.-->
+
         <div class="col-sm-6">
-            <h3>Kirjaudu sisään</h3>
-            <form>
-                Käyttäjätunnus:<br>
-                <input type="text" name="käyttäjätunnus"><br>
-                Salasana:<br>
-                <input type="password" name="salasana">
-                <input type="submit">
-            </form>
-            <a href="rekisteroidy.html">Rekisteröidy käyttäjäksi</a>
+            Kaikki uintiin liittyvä keskustelu on toivottavaa ja sallittua. Pidetään keskustelu siistinä
+            ja asiallisena. Moderaattoreilla on mahdollisuus poistaa asiattomat kommentit ja keskustelun aloitukset.
+            Jos kuitenkin haluat purkaa ärtymystäsi, tee see rataraivo aiheen alla olevissa keskusteluissa.
         </div>
     </div>
 </div>
