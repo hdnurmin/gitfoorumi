@@ -10,42 +10,68 @@
 
 </head>
 <body>
-<h1 th:text="${otsikkoteksti.getOtsikonNimi()}"></h1>
-<!--th:object="${otsikkoteksti}"-->
+<div class="container">
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="etusivu">Etusivu</a>
+        </div>
+        <!--Käyttäjä voi kirjautua sisään jo olemassa olevilla tunnuksilla tai siirtyä sivulle, jossa voi -->
+        <!--luoda tunnukset.-->
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false">Kirjaudu<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <div>
+                        <form>
+                            Käyttäjätunnus:<br>
+                            <input type="text" name="käyttäjätunnus"><br>
+                            Salasana:<br>
+                            <input type="password" name="salasana">
+                            <input type="submit">
+                        </form>
+                    </div>
+                </ul>
+            </li>
+            <li><a href="rekisteroidy">Rekisteröidy</a></li>
+        </ul>
+    </nav>
+    <h1 th:text="${otsikkoteksti.getOtsikonNimi()}"></h1>
+    <!--th:object="${otsikkoteksti}"-->
 
 
-<div>
+    <div>
 
 
-    <table>
-        <tr>
-            <th>Nimimerkki</th>
-            <th>Viesti</th>
-            <th>Kirjoitettu</th>
-        </tr>
-        <tr th:each="taulukkoMuuttuja : ${viesti}" th:object="${taulukkoMuuttuja}">
+        <table>
+            <tr>
+                <th>Nimimerkki</th>
+                <th>Viesti</th>
+                <th>Kirjoitettu</th>
+            </tr>
+            <tr th:each="taulukkoMuuttuja : ${viesti}" th:object="${taulukkoMuuttuja}">
 
 
-            <td th:text="*{kirjoittaja}"></td>
-            <td th:text="*{sisalto}"></td>
-            <td th:text="*{lahetysAika}"></td>
+                <td th:text="*{kirjoittaja}"></td>
+                <td th:text="*{sisalto}"></td>
+                <td th:text="*{lahetysAika}"></td>
 
-        </tr>
-    </table>
+            </tr>
+        </table>
 
-    <form action="#" th:action="@{/viestisivu}" th:object="${uusiviesti}" method="post">
-       <p> <input type="hidden" th:value="${otsikkoteksti.id}" th:name="'id'"></p>
-        <p>Nimimerkkisi: <input type="text" th:field="*{kirjoittaja}"> </p>
-        <p>Vietisi: <input type="text" th:field="*{sisalto}"> </p>
-        <p> <input type="hidden" th:field="*{lahetysAika}"> </p>
+        <form action="#" th:action="@{/viestisivu}" th:object="${uusiviesti}" method="post">
+            <p><input type="hidden" th:value="${otsikkoteksti.id}" th:name="'id'"></p>
+            <p>Nimimerkkisi: <input type="text" th:field="*{kirjoittaja}"></p>
+            <p>Vietisi: <input type="text" th:field="*{sisalto}"></p>
+            <p><input type="hidden" th:field="*{lahetysAika}"></p>
 
-        <p><input type="submit" value="Lähetä" /> <input type="reset" value="Tyhjennä"/></p>
-    </form>
-
-
-
+            <p><input type="submit" value="Lähetä"/> <input type="reset" value="Tyhjennä"/></p>
+        </form>
+    </div>
 </div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script th:src="@{js/bootstrap.min.js}"></script>
+
 </body>
 </html>
