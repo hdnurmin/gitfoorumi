@@ -3,8 +3,7 @@ package fi.academy.foorumi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -36,9 +35,18 @@ public class ThymeleafKontrolleri {
     public String viestiListaus (@RequestParam (name="id") int id, Model model) {
         List<Viesti> optviesti = viestirepo.haeViestit(id);
         model.addAttribute("viesti", optviesti);
-        model.addAttribute("otsikkoteksti", otsikkorepo.findById(id).get().getOtsikonNimi());
+        model.addAttribute("otsikkoteksti", otsikkorepo.findById(id).get());
+        model.addAttribute("uusiviesti", new Viesti());
         return "viestisivu";
     }
+
+    @PostMapping ("/viestisivu")
+    public String uudenViestinLahetys(@ModelAttribute Viesti viesti, @RequestParam ("id") int tunniste) {
+     viesti.setOtsikko(otsikkorepo.findById(tunniste).get());
+        viestirepo.save(viesti);
+        return "redirect:/viestisivu"+ "?id=" + tunniste;
+    }
+
 
 
 }
