@@ -17,13 +17,13 @@ public class FoorumiApplication {
 		SpringApplication.run(FoorumiApplication.class, args);
 	}
 
-	@Transactional
+	/*@Transactional
 	@Bean
 	CommandLineRunner luoOppilaat(ViestiRepositorio viestirepo, OtsikkoRepositorio otsikkorepo) {
 		return (args) -> {
 			List<Viesti> viestit = new ArrayList<>();
-			Otsikko ekaOtsikko = new Otsikko("Kanit", "Hieno päivä tänään");
-			Otsikko tokaOtsikko = new Otsikko("Karhut", "Vielä hienompi päivä");
+			Otsikko ekaOtsikko = new Otsikko("Tekniikka", "Kuinka uin koiraa tehokkaasti?");
+			Otsikko tokaOtsikko = new Otsikko("Uimapaikat", "Salainen paratiisi");
 			Viesti ekaViesti = new Viesti("Blah blah blah", ekaOtsikko);
 			Viesti tokaViesti = new Viesti("Laalaalaa", ekaOtsikko);
 			Viesti kolmasViesti = new Viesti("Tadaa", ekaOtsikko);
@@ -35,12 +35,12 @@ public class FoorumiApplication {
 
 			viestirepo.saveAll(viestit);
 
-			/*viestirepo.save(ekaViesti);
+			*//*viestirepo.save(ekaViesti);
 			viestirepo.save(tokaViesti);
-			viestirepo.save(kolmasViesti);*/
-			/*otsikkorepo.save(ekaOtsikko);*/
+			viestirepo.save(kolmasViesti);*//*
+			*//*otsikkorepo.save(ekaOtsikko);*//*
 
-/*			Koulu academySuomi = new Koulu("Academy Suomi", "Espoo");
+*//*			Koulu academySuomi = new Koulu("Academy Suomi", "Espoo");
 			academySuomi= koulurepositorio.save(academySuomi);
 			Koulu academyRuotsi = new Koulu("Academy Ruotsi", "Tukholma");
 			academyRuotsi= koulurepositorio.save(academyRuotsi);
@@ -51,11 +51,11 @@ public class FoorumiApplication {
 
 			oppilasrepository.save(jani);
 			oppilasrepository.save(minna);
-			oppilasrepository.save(ase);*/
+			oppilasrepository.save(ase);*//*
 
 
 //			oppilasrepository.saveAll(oppilaat);
 
 		};
-	}
+	}*/
 }
