@@ -4,20 +4,51 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet"th:href="@{/css/bootstrap.min.css}"/>
-    <link rel="stylesheet"th:href="@{/css/tyyli.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/tyyli.css}"/>
     <title>Aiheen keskustelut</title>
 </head>
+
 <body>
-<div>
-    <table>
-        <th>Keskustelut</th>
-        <tr th:each="taulukkoMuuttuja : ${otsikonnimi}" th:object="${taulukkoMuuttuja}">
-            <td ><a th:href="@{/viestisivu}+'?id='+*{id}" th:text="*{otsikonNimi}"/></td>
-        </tr>
-    </table>
+<div class="container">
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="etusivu">Etusivu</a>
+        </div>
+        <!--Käyttäjä voi kirjautua sisään jo olemassa olevilla tunnuksilla tai siirtyä sivulle, jossa voi -->
+        <!--luoda tunnukset.-->
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false">Kirjaudu<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <div>
+                        <form>
+                            Käyttäjätunnus:<br>
+                            <input type="text" name="käyttäjätunnus"><br>
+                            Salasana:<br>
+                            <input type="password" name="salasana">
+                            <input type="submit">
+                        </form>
+                    </div>
+                </ul>
+            </li>
+            <li><a href="rekisteroidy">Rekisteröidy</a></li>
+        </ul>
+    </nav>
+
+    <div>
+        <table>
+            <th>Keskustelut</th>
+            <tr th:each="taulukkoMuuttuja : ${otsikonnimi}" th:object="${taulukkoMuuttuja}">
+                <td><a th:href="@{/viestisivu}+'?id='+*{id}" th:text="*{otsikonNimi}"/></td>
+            </tr>
+        </table>
+    </div>
 </div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script th:src="@{js/bootstrap.min.js}"></script>
+
 </body>
 </html>

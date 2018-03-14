@@ -35,6 +35,7 @@
             <li><a href="rekisteroidy">Rekisteröidy</a></li>
         </ul>
     </nav>
+
     <div class="jumbotron text-center" style="background-color: rgba(242, 242, 242 ,0.8)">
         <h1>Uintifoorumi</h1>
         <p>Tervetuloa keskustelemaan uinnista!</p>
@@ -44,7 +45,7 @@
 
     <div class="row" style="background-color: rgba(242, 242, 242 ,0.5)">
         <div class="col-sm-6">
-            <table>
+            <table class="table">
                 <th><h3>Keskusteluaiheet</h3></th>
                 <tr th:each="taulukkoMuuttuja : ${otsikko}" th:object="${taulukkoMuuttuja}">
                     <td><a th:href="@{/aiheenkeskustelut}+'?id='+*{aihealue}" th:text="*{aihealue}"/></td>
@@ -62,5 +63,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script th:src="@{js/bootstrap.min.js}"></script>
+
 </body>
 </html>
