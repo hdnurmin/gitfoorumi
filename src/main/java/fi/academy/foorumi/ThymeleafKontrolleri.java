@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,9 +43,10 @@ public class ThymeleafKontrolleri {
     }
 
     @PostMapping ("/viestisivu")
-    public String uudenViestinLahetys(@ModelAttribute Viesti viesti, @RequestParam ("id") int tunniste) {
+    public String uudenViestinLahetys(Model model, @ModelAttribute Viesti viesti, @RequestParam ("id") int tunniste) {
      viesti.setOtsikko(otsikkorepo.findById(tunniste).get());
-        viestirepo.save(viesti);
+     viesti.setLahetysAika(LocalDateTime.now());
+     viestirepo.save(viesti);
         return "redirect:/viestisivu"+ "?id=" + tunniste;
     }
 

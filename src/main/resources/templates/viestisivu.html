@@ -26,9 +26,9 @@
         <tr th:each="taulukkoMuuttuja : ${viesti}" th:object="${taulukkoMuuttuja}">
 
 
-            <!--<td th:text="*{kirjoittaja}"></td>-->
+            <td th:text="*{kirjoittaja}"></td>
             <td th:text="*{sisalto}"></td>
-            <!--<td th:text="*{pvm}"></td>-->
+            <td th:text="*{lahetysAika}"></td>
 
         </tr>
     </table>
