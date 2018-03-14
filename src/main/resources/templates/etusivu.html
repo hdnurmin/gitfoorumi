@@ -10,25 +10,34 @@
 </head>
 <body>
 <div class="container">
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
+    <nav class="navbar navbar-default">
         <div class="navbar-header">
-            <a class="navbar-brand" href="etusivu.html">Etusivu</a>
+            <a class="navbar-brand" href="etusivu">Etusivu</a>
         </div>
-        <ul class="nav navbar-nav">
-            <!--<li class="active"><a href="etusivu.html">Etusivu</a></li>-->
-        </ul>
+        <!--Käyttäjä voi kirjautua sisään jo olemassa olevilla tunnuksilla tai siirtyä sivulle, jossa voi -->
+        <!--luoda tunnukset.-->
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="rekisteroidy"><span class="glyphicon glyphicon-user"></span>Rekisteröidy</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false">Kirjaudu<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <div>
+                        <form>
+                            Käyttäjätunnus:<br>
+                            <input type="text" name="käyttäjätunnus"><br>
+                            Salasana:<br>
+                            <input type="password" name="salasana">
+                            <input type="submit">
+                        </form>
+                    </div>
+                </ul>
+            </li>
+            <li><a href="rekisteroidy">Rekisteröidy</a></li>
         </ul>
-    </div>
-</nav>
+    </nav>
     <div class="jumbotron text-center" style="background-color: rgba(242, 242, 242 ,0.8)">
         <h1>Uintifoorumi</h1>
         <p>Tervetuloa keskustelemaan uinnista!</p>
-        <h5>Kaikki uintiin liittyvä keskustelu on toivottavaa ja sallittua. Pidetään keskustelu siistinä
-        ja asiallisena. Moderaattoreilla on mahdollisuus poistaa asiattomat kommentit ja keskustelun aloitukset.
-        Jos kuitenkin haluat purkaa ärtymystäsi, tee see rataraivo aiheen alla olevissa keskusteluissa.</h5>
     </div>
     <!--Listataan aihealueet tietokannasta taulukoksi. Aihealueen nimi on linkki, joka johtaa-->
     <!--aiheen alla oleviin keskusteluihin.-->
@@ -36,24 +45,17 @@
     <div class="row" style="background-color: rgba(242, 242, 242 ,0.5)">
         <div class="col-sm-6">
             <table>
-            <th><h3>Keskusteluaiheet</h3></th>
-            <tr th:each="taulukkoMuuttuja : ${otsikko}" th:object="${taulukkoMuuttuja}">
-                <td><a th:href="@{/aiheenkeskustelut}+'?id='+*{aihealue}" th:text="*{aihealue}"/></td>
-            </tr>
+                <th><h3>Keskusteluaiheet</h3></th>
+                <tr th:each="taulukkoMuuttuja : ${otsikko}" th:object="${taulukkoMuuttuja}">
+                    <td><a th:href="@{/aiheenkeskustelut}+'?id='+*{aihealue}" th:text="*{aihealue}"/></td>
+                </tr>
             </table>
         </div>
-        <!--Käyttäjä voi kirjautua sisään jo olemassa olevilla tunnuksilla tai siirtyä sivulle, jossa voi -->
-        <!--luoda tunnukset.-->
+
         <div class="col-sm-6">
-            <h3>Kirjaudu sisään</h3>
-            <form>
-                Käyttäjätunnus:<br>
-                <input type="text" name="käyttäjätunnus"><br>
-                Salasana:<br>
-                <input type="password" name="salasana">
-                <input type="submit">
-            </form>
-            <a href="rekisteroidy">Rekisteröidy käyttäjäksi</a>
+            Kaikki uintiin liittyvä keskustelu on toivottavaa ja sallittua. Pidetään keskustelu siistinä
+            ja asiallisena. Moderaattoreilla on mahdollisuus poistaa asiattomat kommentit ja keskustelun aloitukset.
+            Jos kuitenkin haluat purkaa ärtymystäsi, tee see rataraivo aiheen alla olevissa keskusteluissa.
         </div>
     </div>
 </div>
