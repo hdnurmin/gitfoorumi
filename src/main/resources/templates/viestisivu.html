@@ -10,9 +10,9 @@
 
 </head>
 <body>
-<h1 th:text="${viesti}"> </h1>
-
-<div class="">
+<h1 th:text="${otsikkoteksti}"> </h1>
+<!--th:object="${otsikkoteksti}"-->
+<div>
     <table>
         <tr th:each="taulukkoMuuttuja : ${viesti}" th:object="${taulukkoMuuttuja}">
             <td th:text="*{sisalto}"></td>

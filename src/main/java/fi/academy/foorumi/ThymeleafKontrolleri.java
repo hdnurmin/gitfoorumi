@@ -36,6 +36,7 @@ public class ThymeleafKontrolleri {
     public String viestiListaus (@RequestParam (name="id") int id, Model model) {
         List<Viesti> optviesti = viestirepo.haeViestit(id);
         model.addAttribute("viesti", optviesti);
+        model.addAttribute("otsikkoteksti", otsikkorepo.findById(id).get().getOtsikonNimi());
         return "viestisivu";
     }
 
