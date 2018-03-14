@@ -11,9 +11,9 @@ public class Otsikko {
     private int id;
     private String aihealue;
     private String otsikonNimi;
-    @JsonIgnore
+    /*@JsonIgnore
     @OneToMany (mappedBy = "otsikko")
-    public List<Viesti> aiheenViestit;
+    public List<Viesti> aiheenViestit;*/
 
     public Otsikko() {
     }
@@ -56,11 +56,11 @@ public class Otsikko {
                 '}';
     }
 
-    public List<Viesti> getAiheenViestit() {
+   /* public List<Viesti> getAiheenViestit() {
         return aiheenViestit;
     }
 
     public void setAiheenViestit(List<Viesti> aiheenViestit) {
         this.aiheenViestit = aiheenViestit;
-    }
+    }*/
 }

@@ -25,7 +25,7 @@
             <table>
             <th><h3>Keskusteluaiheet</h3></th>
             <tr th:each="taulukkoMuuttuja : ${otsikko}" th:object="${taulukkoMuuttuja}">
-                <td><a th:href="@{/aiheenkeskustelut}+'?id='+*{aihealue}" th:text="*{aihealue}"/></td>
+                <td><a th:href="@{/aiheenkeskustelut}+'?id='+${taulukkoMuuttuja}" th:text="${taulukkoMuuttuja}"/></td>
             </tr>
             </table>
         </div>

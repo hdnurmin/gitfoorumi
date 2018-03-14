@@ -21,7 +21,7 @@ public class ThymeleafKontrolleri {
 
     @GetMapping ("/etusivu")
     public String aihelistausEtusivulle (Model model) {
-        model.addAttribute("otsikko", otsikkorepo.findAll());
+        model.addAttribute("otsikko", otsikkorepo.naytaEriAihealueet());
         return "etusivu";
     }
 
@@ -29,8 +29,21 @@ public class ThymeleafKontrolleri {
     public String keskusteluListaus (@RequestParam (name="id") String aihe, Model model) {
         List<Otsikko> optaihe = otsikkorepo.findByAihealue(aihe);
             model.addAttribute("otsikonnimi", optaihe);
-
+//            model.addAttribute("aiheteksti", otsikkorepo.findById(id).get());
+            model.addAttribute("uusiotsikko", new Otsikko());
+            model.addAttribute("aihealueennimi", aihe);
         return "aiheenkeskustelut";
+    }
+
+    @PostMapping ("/aiheenkeskustelut")
+    public String uudenKeskustelunLisays(Otsikko saapuvaOtsikko) {
+//        otsikko.setAihealue(otsikkorepo.findById(id).get());
+        Otsikko apuotsikko= new Otsikko();
+        apuotsikko.setAihealue(saapuvaOtsikko.getAihealue());
+        apuotsikko.setOtsikonNimi(saapuvaOtsikko.getOtsikonNimi());
+        otsikkorepo.save(apuotsikko);
+
+        return "redirect:/aiheenkeskustelut" + "?id=" + saapuvaOtsikko.getAihealue();
     }
 
     @GetMapping ("/viestisivu")
