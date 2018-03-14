@@ -45,18 +45,22 @@
 
     <div class="row" style="background-color: rgba(242, 242, 242 ,0.5)">
         <div class="col-sm-6">
-            <table>
+            <table class="list-group">
             <th><h3>Keskusteluaiheet</h3></th>
             <tr th:each="taulukkoMuuttuja : ${otsikko}" th:object="${taulukkoMuuttuja}">
-                <td><a th:href="@{/aiheenkeskustelut}+'?id='+${taulukkoMuuttuja}" th:text="${taulukkoMuuttuja}"/></td>
+                <td class="list-group-item"><a th:href="@{/aiheenkeskustelut}+'?id='+${taulukkoMuuttuja}" th:text="${taulukkoMuuttuja}"/></td>
             </tr>
             </table>
         </div>
 
         <div class="col-sm-6">
-            Kaikki uintiin liittyvä keskustelu on toivottavaa ja sallittua. Pidetään keskustelu siistinä
-            ja asiallisena. Moderaattoreilla on mahdollisuus poistaa asiattomat kommentit ja keskustelun aloitukset.
-            Jos kuitenkin haluat purkaa ärtymystäsi, tee see rataraivo aiheen alla olevissa keskusteluissa.
+            <p class="text-left">
+                <br>
+                <br>
+                Kaikki uintiin liittyvä keskustelu on toivottavaa ja sallittua. Pidetään keskustelu siistinä
+                ja asiallisena. Moderaattoreilla on mahdollisuus poistaa asiattomat kommentit ja keskustelun aloitukset.
+                Jos kuitenkin haluat purkaa ärtymystäsi, tee see rataraivo aiheen alla olevissa keskusteluissa.
+            </p>
         </div>
     </div>
 </div>
