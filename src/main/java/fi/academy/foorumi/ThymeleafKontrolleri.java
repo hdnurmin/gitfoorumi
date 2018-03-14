@@ -47,6 +47,10 @@ public class ThymeleafKontrolleri {
         return "redirect:/viestisivu"+ "?id=" + tunniste;
     }
 
+    @GetMapping ("/rekisteroidy")
+    public String rekisteroityminen() {
+        return "rekisteroidy";
+    }
 
 
 }
