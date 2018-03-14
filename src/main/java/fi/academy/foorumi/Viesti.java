@@ -2,6 +2,7 @@ package fi.academy.foorumi;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class Viesti {
@@ -10,7 +11,7 @@ public class Viesti {
     private int tunniste;
     @Lob
     private String sisalto;
-    private LocalDate lahetysAika;
+    private LocalDateTime lahetysAika;
     private String kirjoittaja;
     @ManyToOne (cascade = CascadeType.PERSIST)
     @JoinColumn
@@ -56,11 +57,11 @@ public class Viesti {
         this.otsikko = otsikko;
     }
 
-    public LocalDate getLahetysAika() {
+    public LocalDateTime getLahetysAika() {
         return lahetysAika;
     }
 
-    public void setLahetysAika(LocalDate lahetysAika) {
+    public void setLahetysAika(LocalDateTime lahetysAika) {
         this.lahetysAika = lahetysAika;
     }
 
