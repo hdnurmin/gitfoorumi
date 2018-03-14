@@ -4,19 +4,12 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet"th:href="@{/css/bootstrap.min.css}"/>
-    <link rel="stylesheet"th:href="@{/css/tyyli.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/tyyli.css}"/>
     <title>Aiheen keskustelut</title>
 </head>
-<body>
-<!--<div>-->
-    <!--<table>-->
-        <!--<th>Keskustelut</th>-->
-        <!--<tr th:each="taulukkoMuuttuja : ${otsikonnimi}" th:object="${taulukkoMuuttuja}">-->
-            <!--<td ><a th:href="@{/viestisivu}+'?id='+*{id}" th:text="*{otsikonNimi}"/></td>-->
 
-        <!--</tr>-->
-    <!--</table>-->
+<body>
 <div class="container">
     <nav class="navbar navbar-default">
         <div class="navbar-header">
@@ -44,21 +37,31 @@
         </ul>
     </nav>
 
-    <div>
-        <table class="table">
-            <th>Keskustelut</th>
-            <tr th:each="taulukkoMuuttuja : ${otsikonnimi}" th:object="${taulukkoMuuttuja}">
-                <td><a th:href="@{/viestisivu}+'?id='+*{id}" th:text="*{otsikonNimi}"/></td>
-            </tr>
-        </table>
+    <div class="jumbotron text-center" style="background-color: rgba(242, 242, 242 ,0.8)">
+        <h1>Tähän tulee keskusteluiden aihe</h1>
+        <p>Osallistu keskusteluun tai aloita uusi aihe!</p>
+    </div>
+
+    <div class="row" style="background-color: rgba(242, 242, 242 ,0.5)">
+        <div class="col-sm-6">
+            <table class="list-group">
+                <th><h3>Keskustelut</h3></th>
+                <tr th:each="taulukkoMuuttuja : ${otsikonnimi}" th:object="${taulukkoMuuttuja}">
+                    <td class="list-group-item"><a th:href="@{/viestisivu}+'?id='+*{id}" th:text="*{otsikonNimi}"/></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-sm-6">
+            <br>
+            <form action="#" th:action="@{/aiheenkeskustelut}" th:object="${uusiotsikko}" method="post">
+                <p><input th:type="hidden" th:name="aihealue" th:id="aihealue" th:value="${aihealueennimi}"/></p>
+                <p>Aloita uusi keskustelu aiheesta: <input th:type="text" th:field="*{otsikonNimi}"/></p>
+                <p><input type="submit" value="Lähetä"/> <input type="reset" value="Tyhjennä"/></p>
+            </form>
+        </div>
     </div>
 </div>
-
-<form action="#" th:action="@{/aiheenkeskustelut}" th:object="${uusiotsikko}" method="post">
-    <p> <input th:type="hidden" th:name="aihealue" th:id="aihealue" th:value="${aihealueennimi}" /></p>
-    <p>Aloita uusi keskustelu aiheesta: <input th:type="text" th:field="*{otsikonNimi}"/> </p>
-    <p><input type="submit" value="Lähetä" /> <input type="reset" value="Tyhjennä"/></p>
-</form>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script th:src="@{js/bootstrap.min.js}"></script>
