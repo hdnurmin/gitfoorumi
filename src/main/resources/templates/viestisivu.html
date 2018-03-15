@@ -88,13 +88,18 @@
 
         <div class="form-group row">
             <div class="col-sm-offset-3 col-sm-6">
-            <button type="submit" class="btn btn-primary">Lähetä</button>
-            <button type="reset" class="btn btn-primary" >Tyhjennä</button>
+                <button type="submit" class="btn btn-primary">Lähetä</button>
+                <button type="reset" class="btn btn-primary">Tyhjennä</button>
             </div>
         </div>
     </form>
+    <button onclick="goBack()" class="btn btn-primary">Palaa</button>
 
-
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 
 </div>
 
