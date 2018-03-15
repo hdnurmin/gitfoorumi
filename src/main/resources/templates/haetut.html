@@ -37,23 +37,18 @@
         <h1>Hakutulokset</h1>
         <p th:utext="'hakusanalla &lt;i&gt;' +  ${hakusana} + '&lt;/i&gt;'"></p>
     </div>
+
     <!--Listataan aihealueet tietokannasta taulukoksi. Aihealueen nimi on linkki, joka johtaa-->
     <!--aiheen alla oleviin keskusteluihin.-->
-
-    <div class="row" style="background-color: rgba(242, 242, 242 ,0.5)">
+    <div class="row" style="background-color: rgba(242, 242, 242 ,0.8)">
         <div class="col-sm-12">
             <table class="list-group">
-                <tr><th>Viesti</th><th>Keskustelu</th></tr>
-                <!--Haetaan hakusanaan sopivat keskustelun aiheet:-->
-                <!--<tr th:each="taulukkoMuuttuja : ${loytynytKeskustelu}" th:object="${taulukkoMuuttuja}">-->
-                    <!--<td class="list-group-item"><a th:href="@{/aiheenkeskustelut}+'?id='+${taulukkoMuuttuja}" th:text="${taulukkoMuuttuja}"/></td>-->
-                    <!--<td button type="button"><a th:href="MIHIN HALUTAAN MENNÄ"></a></td>-->
-                <!--</tr>-->
+                <tr><th><h3>Viesti</h3></th><th><h3>Keskustelu</h3></th></tr>
+
                 <!--haetaan hakusanaan sopivat viestit-->
                <tr th:each="toinenMuuttuja : ${loytynytviesti}" th:object="${toinenMuuttuja}">
                    <td class="list-group-item" th:text="*{sisalto}"></td>
                    <td><a th:href="@{/viestisivu}+'?id='+*{otsikko.getId()}" th:text="${toinenMuuttuja.otsikko.getOtsikonNimi()}"/></td>
-                   <!--<td button type="button"><a th:href="MIHIN HALUTAAN MENNÄ"></a></td>-->
                </tr>
             </table>
         </div>
