@@ -10,14 +10,14 @@
 
 </head>
 <body>
-<div class="container">
+<div class="container" >
     <nav class="navbar navbar-default">
         <div class="navbar-header">
             <a class="navbar-brand" href="etusivu">Etusivu</a>
         </div>
         <!--Käyttäjä voi kirjautua sisään jo olemassa olevilla tunnuksilla tai siirtyä sivulle, jossa voi -->
         <!--luoda tunnukset.-->
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right" style="padding-right: 2%">
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                    aria-expanded="false">Kirjaudu<span class="caret"></span></a>
@@ -33,10 +33,10 @@
                     </div>
                 </ul>
             </li>
-            <li><a href="rekisteroidy">Rekisteröidy</a></li>
-        </ul>
+            <li ><a href="rekisteroidy">Rekisteröidy</a></li>
+        </ul >
     </nav>
-    <h1 th:text="${otsikkoteksti.getOtsikonNimi()}"></h1>
+    <h1 th:text="${otsikkoteksti.getOtsikonNimi()}" class="taustavari" style="padding-left: 2%"></h1>
 
 
 
