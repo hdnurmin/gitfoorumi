@@ -56,9 +56,15 @@
         <div class="col-sm-6">
             <br>
             <form action="#" th:action="@{/aiheenkeskustelut}" th:object="${uusiotsikko}" method="post">
-                <p><input th:type="hidden" th:name="aihealue" th:id="aihealue" th:value="${aihealueennimi}"/></p>
-                <p>Aloita uusi keskustelu aiheesta: <input th:type="text" th:field="*{otsikonNimi}"/></p>
-                <p><input type="submit" value="Lähetä"/> <input type="reset" value="Tyhjennä"/></p>
+                <div class="form-group row">
+                    <p><input class="form-control" th:type="hidden" th:name="aihealue" th:id="aihealue" th:value="${aihealueennimi}"/></p>
+                </div>
+                <div class="form-group row">
+                    <p>Aloita uusi keskustelu aiheesta: <input class="form-control" th:type="text" th:field="*{otsikonNimi}"/></p>
+                </div>
+                <div class="form-group row">
+                    <p><input class="btn btn-primary" type="submit" value="Lähetä"/> <input class="btn btn-primary" type="reset" value="Tyhjennä"/></p>
+                </div>
             </form>
 
 
