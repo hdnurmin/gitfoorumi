@@ -87,5 +87,30 @@ public class ThymeleafKontrolleri {
      return "redirect:viestisivu"+ "?id=" + tallennettuViesti.getOtsikko().getId();
     }
 
+    @GetMapping ("/muokkaaviestia")
+    public String muokkaaViestia (@RequestParam (name="id") Integer tunniste, Model model) {
+        List<Viesti> optviesti = viestirepo.haeViestit(tunniste);
+        model.addAttribute("viesti", optviesti);
+        model.addAttribute("otsikkoteksti", otsikkorepo.findById(tunniste).get());
+        model.addAttribute("uusiviesti", new Viesti());
+        Viesti muokattava = viestirepo.findByTunniste(tunniste);
+        model.addAttribute("muokattu", muokattava);
+        return "viestinmuokkaus";
+
+
+    }
+
+    @PostMapping ("/muokkausok")
+    public String viestiMuokattuOK (@ModelAttribute Otsikko otsikko, Model model, @ModelAttribute Viesti viesti, @RequestParam ("id") int tunniste) {
+        Viesti tatamuokataan = viestirepo.findById(tunniste).get();
+        tatamuokataan.setSisalto(viesti.getSisalto());
+//        tatamuokataan.setLahetysAika(LocalDateTime.now());
+        viestirepo.save(tatamuokataan);
+        //Otsikko tallennettuOtsikko = otsikko;
+        return "redirect:/viestisivu"+ "?id=" + tatamuokataan.getOtsikko().getId();
+
+
+//    return "redirect:viestisivu"+ "?id=" + muokattava.getOtsikko().getId();
+    }
 
 }
