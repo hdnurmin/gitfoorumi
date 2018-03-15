@@ -41,8 +41,8 @@
 
     <form action="#" th:action="@{/muokkausok}" th:object="${muokattu}" method="post">
 
-        <input type="hidden" th:value="${otsikkoteksti.id}" th:name="'id'">
-
+        <input type="hidden" th:value="${otsikkoteksti.id}" th:name="'otsikko.id'">
+        <input type="hidden" th:field="*{tunniste}"/>
         <div class="form-group row">
             <label class="taustavari col-sm-2 col-sm-offset-1 col-form-label" th:for="*{kirjoittaja}">Nimimerkkisi: </label>
             <div class="col-sm-8">
