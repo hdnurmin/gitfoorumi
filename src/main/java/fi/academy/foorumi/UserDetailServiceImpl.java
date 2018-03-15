@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 
 @Service
-public class CustomUserDetailService implements UserDetailsService  {
+public class UserDetailServiceImpl implements UserDetailsService  {
 
     @Autowired
     private KayttajaRepositorio kayttajaRepo;

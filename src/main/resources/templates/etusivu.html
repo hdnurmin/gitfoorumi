@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/security/tags">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,24 +18,7 @@
         <!--Käyttäjä voi kirjautua sisään jo olemassa olevilla tunnuksilla tai siirtyä sivulle, jossa voi -->
         <!--luoda tunnukset.-->
         <ul class="nav navbar-nav navbar-right" style="padding-right: 2%">
-
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                   aria-expanded="false">Kirjaudu<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <div>
-                        <form class="navbar-brand">
-                            Käyttäjätunnus:<br>
-                            <input type="text" name="käyttäjätunnus"><br>
-                            Salasana:<br>
-                            <input type="password" name="salasana">
-                            <input type="submit">
-                        </form>
-                    </div>
-                </ul>
-            </li>
-
-
+            <li ><a href="login">Kirjaudu</a></li>
             <li><a href="rekisteroidy">Rekisteröidy</a></li>
 
             <!--hakuruutu:-->
@@ -49,6 +32,10 @@
             </li>
         </ul>
     </nav>
+
+    <div sec:authorize="hasAuthority('USER')" style="color: red">
+        <p sec:authentication="name"></p>
+    </div>
 
     <div class="jumbotron text-center" style="background-color: rgba(242, 242, 242 ,0.8)">
         <h1>Uintifoorumi</h1>

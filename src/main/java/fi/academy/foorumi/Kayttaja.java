@@ -11,15 +11,14 @@ public class Kayttaja {
     private int kayttajatunniste;
     private String kayttajatunnus;
     private String salasana;
-    private String nimimerkki;
 
     public Kayttaja() {
     }
 
-    public Kayttaja(String kayttajatunnus, String salasana, String nimimerkki) {
+    public Kayttaja(String kayttajatunnus, String salasana) {
         this.kayttajatunnus = kayttajatunnus;
         this.salasana = salasana;
-        this.nimimerkki = nimimerkki;
+
     }
 
     public int getKayttajatunniste() {
@@ -46,11 +45,7 @@ public class Kayttaja {
         this.salasana = salasana;
     }
 
-    public String getNimimerkki() {
-        return nimimerkki;
-    }
 
-    public void setNimimerkki(String nimimerkki) {
-        this.nimimerkki = nimimerkki;
-    }
+
+
 }

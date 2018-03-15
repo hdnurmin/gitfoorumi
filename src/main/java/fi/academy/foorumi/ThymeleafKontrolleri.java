@@ -23,7 +23,10 @@ public class ThymeleafKontrolleri {
     private ViestiRepositorio viestirepo;
 
     @Autowired
-    private CustomUserDetailService customUserDetailService;
+    private SecurityService securityService;
+
+    @Autowired
+    private  KayttajaServiceImpl kayttajaService;
 
 
     @GetMapping ("/etusivu")
@@ -76,7 +79,9 @@ public class ThymeleafKontrolleri {
     }
 
     @GetMapping ("/rekisteroidy")
-    public String rekisteroityminen() {
+    public String rekisteroityminen(Model model) {
+        model.addAttribute("kayttajalomake", new Kayttaja());
+
         return "rekisteroidy";
     }
 
@@ -124,4 +129,21 @@ public class ThymeleafKontrolleri {
         return "haetut";
     }
 
+    @PostMapping ("/rekisteroidy")
+    public  String rekisteroi (Kayttaja luotuKayttaja) {
+        kayttajaService.tallenna(luotuKayttaja);
+        securityService.autoKirjaudu(luotuKayttaja.getKayttajatunnus(),luotuKayttaja.getSalasana());
+        return "redirect:/etusivu";
+    }
+
+    @GetMapping ("/login")
+    public String kirjautmissivulle (Model model) {
+        model.addAttribute("kayttajalomake", new Kayttaja());
+        return "kirjautuminen";
+    }
+
+    @GetMapping ("/")
+    public String alkuun () {
+        return "redirect:/etusivu";
+    }
 }

@@ -11,7 +11,6 @@
 <body>
 
 <div class="container">
-    <!--navigointipalkki-->
     <nav class="navbar navbar-default">
         <div class="navbar-header">
             <a class="navbar-brand" href="etusivu">Etusivu</a>
@@ -19,13 +18,12 @@
         <!--Käyttäjä voi kirjautua sisään jo olemassa olevilla tunnuksilla tai siirtyä sivulle, jossa voi -->
         <!--luoda tunnukset.-->
         <ul class="nav navbar-nav navbar-right" style="padding-right: 2%">
-
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                    aria-expanded="false">Kirjaudu<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <div>
-                        <form class="navbar-brand">
+                        <form>
                             Käyttäjätunnus:<br>
                             <input type="text" name="käyttäjätunnus"><br>
                             Salasana:<br>
@@ -35,24 +33,12 @@
                     </div>
                 </ul>
             </li>
-
-
             <li><a href="rekisteroidy">Rekisteröidy</a></li>
-
-            <!--hakuruutu:-->
-            <li>
-                <form class="navbar-brand" action="/haetut">
-                    <input type="text" name="hakusana" placeholder="Hae foorumilta">
-                    <button type="submit">
-                        Hae
-                    </button>
-                </form>
-            </li>
         </ul>
     </nav>
 
     <div class="jumbotron text-center" style="background-color: rgba(242, 242, 242 ,0.8)">
-        <h1>Liity Uintifoorumiin</h1>
+        <h1>Kirjaudu</h1>
     </div>
 
     <div class="row" style="background-color: rgba(242, 242, 242 ,0.5)">
@@ -60,35 +46,35 @@
 
         </div>
 
-</div>
+    </div>
 
-    <form action="#" th:action="@{/rekisteroidy}" th:object="${kayttajalomake}" method="post">
+    <form action="#" th:action="@{/login}" th:object="${kayttajalomake}" method="post">
 
 
         <div class="form-group row">
-            <label class="taustavari col-sm-2 col-sm-offset-1 col-form-label" th:for="*{kayttajatunnus}">Käyttäjätunnus: </label>
+            <label class="taustavari col-sm-2 col-sm-offset-1 col-form-label" th:for="'username'">Käyttäjätunnus: </label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" th:field="*{kayttajatunnus}">
+                <input type="text" class="form-control" name="username">
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="taustavari col-sm-2 col-sm-offset-1 col-form-label" th:for="*{salasana}">Salasanasi: </label>
+            <label class="taustavari col-sm-2 col-sm-offset-1 col-form-label" th:for="'password'">Salasanasi: </label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" th:field="*{salasana}">
+                <input type="password" class="form-control" name="password">
             </div>
         </div>
 
 
         <div class="form-group row">
             <div class="col-sm-offset-3 col-sm-6">
-                <button type="submit" class="btn btn-primary">Luo uusi tunnus</button>
+                <button type="submit" class="btn btn-primary">Kirjaudu</button>
             </div>
         </div>
     </form>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script th:src="@{js/bootstrap.min.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script th:src="@{js/bootstrap.min.js}"></script>
 
 </body>
 </html>
