@@ -18,8 +18,10 @@
         <!--Käyttäjä voi kirjautua sisään jo olemassa olevilla tunnuksilla tai siirtyä sivulle, jossa voi -->
         <!--luoda tunnukset.-->
         <ul class="nav navbar-nav navbar-right" style="padding-right: 2%">
-            <li ><a href="login">Kirjaudu</a></li>
-            <li><a href="rekisteroidy">Rekisteröidy</a></li>
+            <li sec:authorize="!hasAuthority('USER')"><a href="login">Kirjaudu</a></li>
+            <li sec:authorize="hasAuthority('USER')"> <a href="/logout">Kirjaudu ulos</a></li>
+            <li sec:authorize="!hasAuthority('USER')"><a href="rekisteroidy">Rekisteröidy</a></li>
+            <li sec:authorize="hasAuthority('USER')"><a th:text="'Kirjautuneena: '+ ${#authentication.name}"></a></li>
 
             <!--hakuruutu:-->
             <li>
@@ -33,10 +35,6 @@
         </ul>
     </nav>
 
-    <div sec:authorize="hasAuthority('USER')" style="color: red">
-        <p sec:authentication="name"></p>
-    </div>
-
     <div class="jumbotron text-center" style="background-color: rgba(242, 242, 242 ,0.8)">
         <h1>Uintifoorumi</h1>
         <p>Tervetuloa keskustelemaan uinnista!</p>
@@ -47,7 +45,7 @@
     <div class="row" style="background-color: rgba(242, 242, 242 ,0.5)">
         <div class="col-sm-6">
             <table class="list-group">
-            <th><h3>Keskusteluaiheet</h3></th>
+            <h3>Keskusteluaiheet</h3>
             <tr th:each="taulukkoMuuttuja : ${otsikko}" th:object="${taulukkoMuuttuja}">
                 <td class="list-group-item"><a th:href="@{/aiheenkeskustelut}+'?id='+${taulukkoMuuttuja}" th:text="${taulukkoMuuttuja}"/></td>
             </tr>
