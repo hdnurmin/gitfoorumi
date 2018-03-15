@@ -47,7 +47,7 @@
             <h5 class=" card-title" th:utext="*{kirjoittaja+'&emsp;&emsp;'+lahetysAika}" style="padding-left:5%;"></h5>
             <p class="pl-5 card-text" th:text="*{sisalto}" style="padding-left:10%;"></p>
             <a href="#" class="card-link" style="padding-left:5%;">Muokkaa</a>
-            <a href="#" class="card-link" style="padding-left:2%;">Poista</a></a>
+            <a th:href="'/poistaviesti?tunniste='+ ${taulukkoMuuttuja.tunniste}" class="card-link"  style="padding-left:2%;"/> Poista</a>
         </div>
     </div>
     </div>

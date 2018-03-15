@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,7 +48,7 @@ public class ThymeleafKontrolleri {
         Otsikko apuotsikko= new Otsikko();
         apuotsikko.setAihealue(saapuvaOtsikko.getAihealue());
         apuotsikko.setOtsikonNimi(saapuvaOtsikko.getOtsikonNimi());
-        
+
         Otsikko tallennettuOtsikko = otsikkorepo.save(apuotsikko);
 
         /*return "redirect:/viestisivu" + "?id=" + saapuvaOtsikko.getAihealue();*/
@@ -79,11 +80,12 @@ public class ThymeleafKontrolleri {
         return "rekisteroidy";
     }
 
-/*    @DeleteMapping("/poistaviesti/{id}")
-    public String poistaViesteja(@RequestParam (name="tunniste") int tunniste, @RequestBody Viesti viesti) {
-     viesti.setTunniste(tunniste);
-     viestirepo.delete(viesti);
-     return "redirect:viestisivu";
-    }*/
+    @GetMapping ("/poistaviesti")
+    public String poistaViesti(@RequestParam (value="tunniste", required = false) Integer tunniste) {
+     Viesti tallennettuViesti=  viestirepo.findByTunniste(tunniste);
+     viestirepo.delete(tallennettuViesti);
+     return "redirect:viestisivu"+ "?id=" + tallennettuViesti.getOtsikko().getId();
+    }
+
 
 }
