@@ -34,8 +34,17 @@
                 </ul>
             </li>
             <li ><a href="rekisteroidy">Rekisteröidy</a></li>
+            <li>
+                <form class="navbar-brand" action="/haetut">
+                    <input type="text" name="hakusana" placeholder="Hae foorumilta">
+                    <button type="submit">
+                        Hae
+                    </button>
+                </form>
+            </li>
         </ul >
     </nav>
+
     <h1 th:text="${otsikkoteksti.getOtsikonNimi()}" class="taustavari" style="padding-left: 2%"></h1>
 
 
