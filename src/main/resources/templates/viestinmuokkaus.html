@@ -51,6 +51,7 @@
         </ul>
     </nav>
 
+    <div class="row" style="background-color: rgba(242, 242, 242 ,0.6)">
     <h1 >Muokkaa viestiä </h1>
 
     <form action="#" th:action="@{/muokkausok}" th:object="${muokattu}" method="post">
@@ -58,14 +59,14 @@
         <input type="hidden" th:value="${otsikkoteksti.id}" th:name="'otsikko.id'">
         <input type="hidden" th:field="*{tunniste}"/>
         <div class="form-group row">
-            <label class="taustavari col-sm-2 col-sm-offset-1 col-form-label" th:for="*{kirjoittaja}">Nimimerkkisi: </label>
+            <label class="col-sm-2 col-sm-offset-1 col-form-label" th:for="*{kirjoittaja}">Nimimerkkisi: </label>
             <div class="col-sm-8">
                 <input type="text" class="form-control" th:field="*{kirjoittaja}">
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="taustavari col-sm-2 col-sm-offset-1 col-form-label" th:for="*{sisalto}">Viestisi: </label>
+            <label class="col-sm-2 col-sm-offset-1 col-form-label" th:for="*{sisalto}">Viestisi: </label>
             <div class="col-sm-8">
                 <textarea class="form-control" rows="3" th:field="*{sisalto}"></textarea>
             </div>
@@ -80,7 +81,7 @@
             </div>
         </div>
     </form>
-
+    </div>
 
 
 </body>

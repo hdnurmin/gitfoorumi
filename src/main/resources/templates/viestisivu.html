@@ -45,9 +45,12 @@
         </ul >
     </nav>
 
-    <h1 th:text="${otsikkoteksti.getOtsikonNimi()}" class="taustavari" style="padding-left: 2%"></h1>
 
+    <div class="jumbotron text-center " style="background-color: rgba(242, 242, 242 ,0.8)">
+        <h1 th:text="${otsikkoteksti.getOtsikonNimi()}"></h1>
+    </div>
 
+    <!--<h1 th:text="${otsikkoteksti.getOtsikonNimi()}" class="taustavari" style="padding-left: 2%"></h1>-->
 
     <div th:each="taulukkoMuuttuja : ${viesti}" th:object="${taulukkoMuuttuja}" class="row">
     <div class="col-sm-10 col-sm-offset-1 ">
