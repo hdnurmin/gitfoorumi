@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/tyyli.css}"/>
-    <title>Viestisivu</title>
+    <title>Viestinmuokkaussivu</title>
 
 </head>
 <body>
@@ -36,39 +36,24 @@
             <li ><a href="rekisteroidy">Rekisteröidy</a></li>
         </ul >
     </nav>
-    <h1 th:text="${otsikkoteksti.getOtsikonNimi()}" class="taustavari" style="padding-left: 2%"></h1>
 
+    <h1 >Muokkaa viestiä </h1>
 
+    <form action="#" th:action="@{/muokkausok}" th:object="${muokattu}" method="post">
 
-    <div th:each="taulukkoMuuttuja : ${viesti}" th:object="${taulukkoMuuttuja}" class="row">
-    <div class="col-sm-10 col-sm-offset-1 ">
-    <div  class=" card taustavari" style="padding-bottom: 1%">
-        <div class=" card-body" >
-            <h5 class=" card-title" th:utext="*{kirjoittaja+'&emsp;&emsp;'+lahetysAika}" style="padding-left:5%;"></h5>
-            <p class="pl-5 card-text" th:text="*{sisalto}" style="padding-left:10%;"></p>
-            <a th:href="'/muokkaaviestia?id=' +${taulukkoMuuttuja.tunniste}" class="card-link" style="padding-left:5%;">Muokkaa</a>
-            <a th:href="'/poistaviesti?tunniste='+ ${taulukkoMuuttuja.tunniste}" class="card-link"  style="padding-left:2%;"/> Poista</a>
-        </div>
-    </div>
-    </div>
-    </div>
-
-    <br/>
-    <form action="#" th:action="@{/viestisivu}" th:object="${uusiviesti}" method="post">
-
-       <input type="hidden" th:value="${otsikkoteksti.id}" th:name="'id'">
+        <input type="hidden" th:value="${otsikkoteksti.id}" th:name="'id'">
 
         <div class="form-group row">
-        <label class="taustavari col-sm-2 col-sm-offset-1 col-form-label" th:for="*{kirjoittaja}">Nimimerkkisi: </label>
+            <label class="taustavari col-sm-2 col-sm-offset-1 col-form-label" th:for="*{kirjoittaja}">Nimimerkkisi: </label>
             <div class="col-sm-8">
-            <input type="text" class="form-control" th:field="*{kirjoittaja}">
+                <input type="text" class="form-control" th:field="*{kirjoittaja}">
             </div>
         </div>
 
         <div class="form-group row">
-        <label class="taustavari col-sm-2 col-sm-offset-1 col-form-label" th:for="*{sisalto}">Viestisi: </label>
+            <label class="taustavari col-sm-2 col-sm-offset-1 col-form-label" th:for="*{sisalto}">Viestisi: </label>
             <div class="col-sm-8">
-            <textarea class="form-control" rows="3" th:field="*{sisalto}"></textarea>
+                <textarea class="form-control" rows="3" th:field="*{sisalto}"></textarea>
             </div>
         </div>
 
@@ -76,18 +61,13 @@
 
         <div class="form-group row">
             <div class="col-sm-offset-3 col-sm-6">
-            <button type="submit" class="btn btn-primary">Lähetä</button>
-            <button type="reset" class="btn btn-primary" >Tyhjennä</button>
+                <button type="submit" class="btn btn-primary">Lähetä</button>
+                <button type="reset" class="btn btn-primary" >Tyhjennä</button>
             </div>
         </div>
     </form>
 
 
-
-</div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script th:src="@{js/bootstrap.min.js}"></script>
 
 </body>
 </html>
