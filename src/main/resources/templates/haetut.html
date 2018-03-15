@@ -60,6 +60,7 @@
     <div class="row" style="background-color: rgba(242, 242, 242 ,0.5)">
         <div class="col-sm-12">
             <table class="list-group">
+                <tr><th>Viesti</th><th>Keskustelu</th></tr>
                 <!--Haetaan hakusanaan sopivat keskustelun aiheet:-->
                 <!--<tr th:each="taulukkoMuuttuja : ${loytynytKeskustelu}" th:object="${taulukkoMuuttuja}">-->
                     <!--<td class="list-group-item"><a th:href="@{/aiheenkeskustelut}+'?id='+${taulukkoMuuttuja}" th:text="${taulukkoMuuttuja}"/></td>-->
@@ -68,7 +69,7 @@
                 <!--haetaan hakusanaan sopivat viestit-->
                <tr th:each="toinenMuuttuja : ${loytynytviesti}" th:object="${toinenMuuttuja}">
                    <td class="list-group-item" th:text="*{sisalto}"></td>
-                   <td><a th:href="@{/viestisivu}+'?id='+*{otsikko.getId()}" th:text="${toinenMuuttuja.otsikko.getAihealue()}"/></td>
+                   <td><a th:href="@{/viestisivu}+'?id='+*{otsikko.getId()}" th:text="${toinenMuuttuja.otsikko.getOtsikonNimi()}"/></td>
                    <!--<td button type="button"><a th:href="MIHIN HALUTAAN MENNÄ"></a></td>-->
                </tr>
             </table>
