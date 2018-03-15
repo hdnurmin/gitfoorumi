@@ -42,14 +42,19 @@ public class ThymeleafKontrolleri {
     }
 
     @PostMapping ("/aiheenkeskustelut")
-    public String uudenKeskustelunLisays(Otsikko saapuvaOtsikko) {
+    public String uudenKeskustelunLisays( Otsikko saapuvaOtsikko) {
 //        otsikko.setAihealue(otsikkorepo.findById(id).get());
         Otsikko apuotsikko= new Otsikko();
         apuotsikko.setAihealue(saapuvaOtsikko.getAihealue());
         apuotsikko.setOtsikonNimi(saapuvaOtsikko.getOtsikonNimi());
-        otsikkorepo.save(apuotsikko);
+        
+        Otsikko tallennettuOtsikko = otsikkorepo.save(apuotsikko);
 
-        return "redirect:/aiheenkeskustelut" + "?id=" + saapuvaOtsikko.getAihealue();
+        /*return "redirect:/viestisivu" + "?id=" + saapuvaOtsikko.getAihealue();*/
+
+        return "redirect:/viestisivu"+ "?id=" + tallennettuOtsikko.getId();
+
+
     }
 
     @GetMapping ("/viestisivu")
