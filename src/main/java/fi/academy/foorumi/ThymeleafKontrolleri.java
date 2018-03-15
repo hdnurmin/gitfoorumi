@@ -81,4 +81,15 @@ public class ThymeleafKontrolleri {
      return "redirect:viestisivu";
     }*/
 
+
+
+    @GetMapping ("/haetut")
+    public String haetutkeskustelut (Hakusana hakusana, Model model) {
+        if (hakusana == null || hakusana.getHakusana() == null || hakusana.getHakusana().trim().isEmpty())
+            return "etusivu";
+        model.addAttribute("hakusana", hakusana.getHakusana());
+        model.addAttribute("loytynytviesti", viestirepo.haeViestitHakusanalla(hakusana.getHakusana()));
+        return "haetut";
+    }
+
 }

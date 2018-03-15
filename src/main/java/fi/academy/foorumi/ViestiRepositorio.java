@@ -12,4 +12,7 @@ public interface ViestiRepositorio extends CrudRepository<Viesti, Integer>{
     @Query ("Select v from Viesti v where v.otsikko.id=:haettu")
     public List<Viesti> haeViestit(@Param("haettu") Integer id);
     List<Viesti> findByTunniste(int viesti);
+
+    @Query ("Select a from Viesti a where a.sisalto like concat('%', :hakusana, '%')")
+    public List<Viesti> haeViestitHakusanalla(@Param("hakusana") String hakusana);
 }

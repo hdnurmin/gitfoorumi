@@ -47,7 +47,7 @@
 
     <div class="jumbotron text-center" style="background-color: rgba(242, 242, 242 ,0.8)">
         <h1>Hakutulokset</h1>
-        <p></p>
+        <p th:utext="'hakusanalla &lt;i&gt;' +  ${hakusana} + '&lt;/i&gt;'"></p>
     </div>
     <!--Listataan aihealueet tietokannasta taulukoksi. Aihealueen nimi on linkki, joka johtaa-->
     <!--aiheen alla oleviin keskusteluihin.-->
@@ -56,14 +56,15 @@
         <div class="col-sm-12">
             <table class="list-group">
                 <!--Haetaan hakusanaan sopivat keskustelun aiheet:-->
-                <tr th:each="taulukkoMuuttuja : ${loytynytKeskustelu}" th:object="${taulukkoMuuttuja}">
-                    <td class="list-group-item"><a th:href="@{/aiheenkeskustelut}+'?id='+${taulukkoMuuttuja}" th:text="${taulukkoMuuttuja}"/></td>
-                    <td button type="button"><a th:href="MIHIN HALUTAAN MENNÄ"></a></td>
-                </tr>
+                <!--<tr th:each="taulukkoMuuttuja : ${loytynytKeskustelu}" th:object="${taulukkoMuuttuja}">-->
+                    <!--<td class="list-group-item"><a th:href="@{/aiheenkeskustelut}+'?id='+${taulukkoMuuttuja}" th:text="${taulukkoMuuttuja}"/></td>-->
+                    <!--<td button type="button"><a th:href="MIHIN HALUTAAN MENNÄ"></a></td>-->
+                <!--</tr>-->
                 <!--haetaan hakusanaan sopivat viestit-->
-               <tr th:each="toinenMuuttuja : ${loytynytViesti}" th:object="${toinenMuuttuja}">
-                   <td class="list-group-item" th:text="${toinenMuuttuja}"></td>
-                   <td button type="button"><a th:href="MIHIN HALUTAAN MENNÄ"></a></td>
+               <tr th:each="toinenMuuttuja : ${loytynytviesti}" th:object="${toinenMuuttuja}">
+                   <td class="list-group-item" th:text="*{sisalto}"></td>
+                   <td><a th:href="@{/viestisivu}+'?id='+*{otsikko.getId()}" th:text="${toinenMuuttuja.otsikko.getAihealue()}"/></td>
+                   <!--<td button type="button"><a th:href="MIHIN HALUTAAN MENNÄ"></a></td>-->
                </tr>
             </table>
         </div>
