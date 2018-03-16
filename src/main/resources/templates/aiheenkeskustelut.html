@@ -11,28 +11,30 @@
 
 <body>
 <div class="container">
-        <!--navigointipalkki-->
-        <nav class="navbar navbar-default">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="etusivu">Etusivu</a>
-            </div>
-            <!--Käyttäjä voi kirjautua sisään jo olemassa olevilla tunnuksilla tai siirtyä sivulle, jossa voi -->
-            <!--luoda tunnukset.-->
-            <ul class="nav navbar-nav navbar-right" style="padding-right: 2%">
-                <li ><a href="login">Kirjaudu</a></li>
-                <li><a href="rekisteroidy">Rekisteröidy</a></li>
+    <!--navigointipalkki-->
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="etusivu">Etusivu</a>
+        </div>
+        <!--Käyttäjä voi kirjautua sisään jo olemassa olevilla tunnuksilla tai siirtyä sivulle, jossa voi -->
+        <!--luoda tunnukset.-->
+        <ul class="nav navbar-nav navbar-right" style="padding-right: 2%">
+            <li sec:authorize="!hasAuthority('USER')"><a href="login">Kirjaudu</a></li>
+            <li sec:authorize="hasAuthority('USER')"> <a href="/logout">Kirjaudu ulos</a></li>
+            <li sec:authorize="!hasAuthority('USER')"><a href="rekisteroidy">Rekisteröidy</a></li>
+            <li sec:authorize="hasAuthority('USER')"><a th:text="'Kirjautuneena: '+ ${#authentication.name}"></a></li>
 
-                <!--hakuruutu:-->
-                <li>
-                    <form class="navbar-brand" action="/haetut">
-                        <input type="text" name="hakusana" placeholder="Hae foorumilta">
-                        <button type="submit">
-                            Hae
-                        </button>
-                    </form>
-                </li>
-            </ul>
-        </nav>
+            <!--hakuruutu:-->
+            <li>
+                <form class="navbar-brand" action="/haetut">
+                    <input type="text" name="hakusana" placeholder="Hae foorumilta">
+                    <button type="submit">
+                        Hae
+                    </button>
+                </form>
+            </li>
+        </ul>
+    </nav>
 
     <div class="jumbotron text-center" style="background-color: rgba(242, 242, 242 ,0.8)">
         <h1 th:text="${aihealueennimi}"></h1>

@@ -1,17 +1,17 @@
 package fi.academy.foorumi;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDateTime;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class ThymeleafKontrolleri {
@@ -109,13 +109,10 @@ public class ThymeleafKontrolleri {
     public String viestiMuokattuOK (Model model, Viesti viesti) {
         Viesti tatamuokataan = viestirepo.findById(viesti.getTunniste()).get();
         tatamuokataan.setSisalto(viesti.getSisalto());
-//        tatamuokataan.setLahetysAika(LocalDateTime.now());
         viestirepo.save(tatamuokataan);
-        //Otsikko tallennettuOtsikko = otsikko;
         return "redirect:/viestisivu"+ "?id=" + tatamuokataan.getOtsikko().getId();
 
 
-//    return "redirect:viestisivu"+ "?id=" + muokattava.getOtsikko().getId();
     }
 
 
@@ -146,4 +143,14 @@ public class ThymeleafKontrolleri {
     public String alkuun () {
         return "redirect:/etusivu";
     }
+
+    @GetMapping("/logout")
+    public String logulos (HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null){
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+            return "redirect:/etusivu";
+    }
+
 }

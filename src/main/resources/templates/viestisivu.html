@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/security/tags">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,28 +11,29 @@
 </head>
 <body>
 <div class="container" >
-        <!--navigointipalkki-->
-        <nav class="navbar navbar-default">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="etusivu">Etusivu</a>
-            </div>
-            <!--Käyttäjä voi kirjautua sisään jo olemassa olevilla tunnuksilla tai siirtyä sivulle, jossa voi -->
-            <!--luoda tunnukset.-->
-            <ul class="nav navbar-nav navbar-right" style="padding-right: 2%">
-                <li ><a href="login">Kirjaudu</a></li>
-                <li><a href="rekisteroidy">Rekisteröidy</a></li>
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="etusivu">Etusivu</a>
+        </div>
+        <!--Käyttäjä voi kirjautua sisään jo olemassa olevilla tunnuksilla tai siirtyä sivulle, jossa voi -->
+        <!--luoda tunnukset.-->
+        <ul class="nav navbar-nav navbar-right" style="padding-right: 2%">
+            <li sec:authorize="!hasAuthority('USER')"><a href="login">Kirjaudu</a></li>
+            <li sec:authorize="hasAuthority('USER')"> <a href="/logout">Kirjaudu ulos</a></li>
+            <li sec:authorize="!hasAuthority('USER')"><a href="rekisteroidy">Rekisteröidy</a></li>
+            <li sec:authorize="hasAuthority('USER')"><a th:text="'Kirjautuneena: '+ ${#authentication.name}"></a></li>
 
-                <!--hakuruutu:-->
-                <li>
-                    <form class="navbar-brand" action="/haetut">
-                        <input type="text" name="hakusana" placeholder="Hae foorumilta">
-                        <button type="submit">
-                            Hae
-                        </button>
-                    </form>
-                </li>
-            </ul>
-        </nav>
+            <!--hakuruutu:-->
+            <li>
+                <form class="navbar-brand" action="/haetut">
+                    <input type="text" name="hakusana" placeholder="Hae foorumilta">
+                    <button type="submit">
+                        Hae
+                    </button>
+                </form>
+            </li>
+        </ul>
+    </nav>
 
 
     <div class="jumbotron text-center " style="background-color: rgba(242, 242, 242 ,0.8)">
@@ -47,8 +48,10 @@
         <div class=" card-body" >
             <h5 class=" card-title" th:utext="*{kirjoittaja+'&emsp;&emsp;'+lahetysAika}" style="padding-left:5%;"></h5>
             <p class="pl-5 card-text" th:text="*{sisalto}" style="padding-left:10%;"></p>
+            <div sec:authorize="hasAuthority('USER')" th:if="${#authentication.name == taulukkoMuuttuja.kirjoittaja}">
             <a th:href="'/muokkaaviestia?id=' +${taulukkoMuuttuja.tunniste}" class="card-link" style="padding-left:5%;">Muokkaa</a>
-            <a th:href="'/poistaviesti?tunniste='+ ${taulukkoMuuttuja.tunniste}" class="card-link"  style="padding-left:2%;"/> Poista</a>
+            <a th:href="'/poistaviesti?tunniste='+ ${taulukkoMuuttuja.tunniste}" class="card-link"  style="padding-left:2%;"> Poista</a>
+            </div>
         </div>
     </div>
     </div>
@@ -63,10 +66,17 @@
 
        <input type="hidden" th:value="${otsikkoteksti.id}" th:name="'id'">
 
-        <div class="form-group row">
-        <label class="col-sm-2 col-sm-offset-1 col-form-label" th:for="*{kirjoittaja}">Nimimerkkisi: </label>
-            <div class="col-sm-8">
-            <input type="text" class="form-control" th:field="*{kirjoittaja}">
+        <div sec:authorize="hasAuthority('USER')" class="form-group row">
+        <label class="col-sm-2 col-sm-offset-1 col-form-label" for="kirjoittaja" > Nimimerkkisi: </label>
+            <div class="col-sm-8" >
+            <input type="text" class="form-control" name="kirjoittaja" id="kirjoittaja" th:value="${#authentication.name}">
+            </div>
+        </div>
+
+        <div sec:authorize="!hasAuthority('USER')" class="form-group row">
+            <label class="col-sm-2 col-sm-offset-1 col-form-label" th:for="*{kirjoittaja}">Nimimerkkisi: </label>
+            <div class="col-sm-8" >
+                <input type="text" class="form-control" th:field="*{kirjoittaja}">
             </div>
         </div>
 
